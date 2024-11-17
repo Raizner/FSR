@@ -1,0 +1,40 @@
+@startuml
+
+class SixDofStorage {
+    + float get()
+    + void set()
+}
+
+class MessagesQueue {
+    + void push()
+    + void pop()
+}
+
+class Task {
+    - std::shared_ptr<MessagesQueue> messageQueue
+    - TasksMessageQueues &tasksMessageQueues
+    # void sendMessages()
+    # void receiveMessages()
+    + void run()
+}
+
+class Task_10 {
+    + void run()
+}
+
+class Task_20 {
+    + void run()
+}
+
+class Task_40 {
+    + void run()
+}
+
+Task <|-- Task_10
+Task <|-- Task_20
+Task <|-- Task_40
+
+Task --> SixDofStorage
+Task --> MessagesQueue
+
+@enduml
